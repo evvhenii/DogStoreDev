@@ -30,7 +30,7 @@ public class ForDogsController {
     }
 	
 	@GetMapping
-    public ResponseEntity<String> get() {
+    public ResponseEntity<String> show() {
         return ResponseEntity.ok(forDogStorageService.forDogsReport());
     }
 	

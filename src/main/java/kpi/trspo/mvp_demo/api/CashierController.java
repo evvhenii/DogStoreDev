@@ -18,7 +18,7 @@ public class CashierController {
     }
 	
 	@PostMapping
-    public ResponseEntity<Cashier> add(@RequestParam String name) {
+    public ResponseEntity<Cashier> create(@RequestParam String name) {
         return ResponseEntity.ok(cashRegisterService.createCashier(name));
     }
 	

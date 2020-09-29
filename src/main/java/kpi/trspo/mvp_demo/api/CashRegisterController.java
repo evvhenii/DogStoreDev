@@ -18,7 +18,7 @@ public class CashRegisterController {
     }
 	
 	@PostMapping
-    public ResponseEntity<CashRegister> add(@RequestParam String name, @RequestParam int amountOfCash) {
+    public ResponseEntity<CashRegister> create(@RequestParam String name, @RequestParam int amountOfCash) {
         return ResponseEntity.ok(cashRegisterService.createCashRegister(name, amountOfCash));
     }
 	

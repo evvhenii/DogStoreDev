@@ -23,14 +23,14 @@ public class DogsController {
     }
 	
 	@PostMapping
-    public ResponseEntity<Dog> addDog(@RequestParam Breed breed, @RequestParam String name, 
+    public ResponseEntity<Dog> create(@RequestParam Breed breed, @RequestParam String name, 
     		                          @RequestParam String description, @RequestParam int price) {
 		
         return ResponseEntity.ok(storageService.takeInStore(breed, name, description, price));
     }
 	
 	@GetMapping
-    public ResponseEntity<String> dogsReport() {
+    public ResponseEntity<String> show() {
         return ResponseEntity.ok(storageService.dogsReport());
     }
 	
