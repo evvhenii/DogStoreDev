@@ -1,34 +1,40 @@
 package kpi.trspo.mvp_demo.services.models.workers;
 
-import kpi.trspo.mvp_demo.services.models.goods.*;
+import java.util.UUID;
 
-public final class Cashier extends Worker{
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-	public Cashier(String name, int age){
-		super(name, age);
-	}
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
-	public void purchaseReport(Dog dog) {
-		System.out.println(dog.getBreed() + " " + dog.getName() + " was sold\n");
-	}
+@Entity
+@EnableAutoConfiguration
+public final class Cashier{
+	@Id
+	private String id;
+	private String name;
 
-	public void purchaseReport(ForDog accessory) {
-		System.out.println(accessory.getType() + " was sold\n");
-	}
+	public Cashier() {}
 	
-	public void purchaseReport(ServiceForDog service) {
-		System.out.println(service.getServiceType() + " was done\n");
+	public Cashier(String name) {
+		this.id = UUID.randomUUID().toString();
+		this.name = name;
 	}
 
 	public void startToWork(){
-		final String openingReport = "Hello! My name is " + super.getName() + 
-				" .I'm a cashier. I'm " + super.getAge() + ".\n" +
+		final String openingReport = "Hello! My name is " + name + 
+				" .I'm a cashier.\n" +
 				"I started to work. So I opened my cash register";
 		System.out.println(openingReport);
 	}
 
 	public void completeTheWork(){		
-		System.out.println("I've finished my work today");
+		System.out.println("Cashier: I've finished my work today");
+	}
+	
+	@Override
+	public String toString() {
+		return "Cashier " + name + " with ID " + id;
 	}
 }
 

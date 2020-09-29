@@ -1,34 +1,44 @@
 package kpi.trspo.mvp_demo.services.models.goods;
 
+import java.util.UUID;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 import kpi.trspo.mvp_demo.services.models.enums.*;
 
+@Entity
+@EnableAutoConfiguration
 public final class ForDog{
-	private final Type type;
-	private final Color color;
-	private final Size size;
-	private final int price;
+	
+	@Id
+	private String forDogId;
+	private Type type;
+	private Color color;
+	private int price;
 
-	public ForDog(Type type, Color color, Size size, int price){
+	public ForDog() {}
+	
+	public ForDog(Type type, Color color, int price){
+		this.forDogId = UUID.randomUUID().toString();
 		this.type = type;
 		this.color = color;
-		this.size = size;
 		this.price = price;
 	}
-
-	public Color getColor() {
-		return color;
+	
+	public String getForDogId() {
+		return forDogId;
 	}
-
-	public Size getSize() {
-		return size;
-	}
-
-	public Type getType() {
-		return type;
-	}
-
+	
 	public int getPrice() {
 		return price;
+	}
+
+	@Override
+	public String toString() {
+		return type + " " + color + ". PRICE: " + price + "Hryvnia. ID " + forDogId;
 	}
 
 }
